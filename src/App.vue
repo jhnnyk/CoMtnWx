@@ -6,12 +6,17 @@
 </template>
 
 <script>
+import { store } from './store';
 import MtnList from './components/MtnList';
 
 export default {
   name: 'App',
   components: {
     MtnList,
+  },
+
+  created() {
+    store.dispatch('getMtns');
   },
 };
 </script>
