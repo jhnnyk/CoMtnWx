@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <h1>Colorado Mountain Weather</h1>
+    <MtnList />
   </div>
 </template>
 
 <script>
+import MtnList from './components/MtnList';
+
 export default {
   name: 'App',
+  components: {
+    MtnList,
+  },
 };
 </script>
 
