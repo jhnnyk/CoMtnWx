@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Colorado Mountain Weather</h1>
+    <TitleBar />
     <MtnList />
     <router-view />
   </div>
@@ -8,11 +8,13 @@
 
 <script>
 import { store } from './store';
+import TitleBar from './components/TitleBar';
 import MtnList from './components/MtnList';
 
 export default {
   name: 'App',
   components: {
+    TitleBar,
     MtnList,
   },
 
