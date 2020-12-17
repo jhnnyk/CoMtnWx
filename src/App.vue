@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Colorado Mountain Weather</h1>
     <MtnList />
+    <router-view />
   </div>
 </template>
 

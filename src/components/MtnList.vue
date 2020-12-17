@@ -5,10 +5,9 @@
         <h3>{{ range.name }}</h3>
         <ul>
           <li v-for="mtn in range.mtns" :key="mtn.slug">
-            <!-- <router-link :to="{ name: 'mtninfo', params: { ...mtn } }">
+            <router-link :to="{ name: 'mtnpage', params: { ...mtn } }">
               {{ mtn.name }} ({{ mtn.el }} ft.)
-            </router-link> -->
-            {{ mtn.name }} ({{ mtn.el }} ft.)
+            </router-link>
           </li>
         </ul>
       </li>
