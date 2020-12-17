@@ -9,7 +9,23 @@ export const store = new Vuex.Store({
     mtns: [],
   },
 
-  getters: {},
+  getters: {
+    mtnsByRange: (state) => {
+      const ranges = [];
+
+      state.mtns.forEach((mtn) => {
+        let index = ranges.findIndex((r) => r.name === mtn.range);
+
+        if (index === -1) {
+          ranges.push({ name: mtn.range, mtns: [mtn] });
+        } else {
+          ranges[index].mtns.push(mtn);
+        }
+      });
+
+      return ranges;
+    },
+  },
 
   mutations: {
     setMtns: (state, mtns) => {

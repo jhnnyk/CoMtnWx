@@ -1,20 +1,28 @@
 <template>
   <div class="mtn-list">
     <ul>
-      <li v-for="mtn in mtns" :key="mtn.slug">{{ mtn.name }}: {{ mtn.el }}</li>
+      <li v-for="(range, index) in mtnsByRange" :key="index">
+        <h3>{{ range.name }}</h3>
+        <ul>
+          <li v-for="mtn in range.mtns" :key="mtn.slug">
+            <!-- <router-link :to="{ name: 'mtninfo', params: { ...mtn } }">
+              {{ mtn.name }} ({{ mtn.el }} ft.)
+            </router-link> -->
+            {{ mtn.name }} ({{ mtn.el }} ft.)
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'MtnList',
   computed: {
-    ...mapState({
-      mtns: (state) => state.mtns,
-    }),
+    ...mapGetters(['mtnsByRange']),
   },
 };
 </script>
