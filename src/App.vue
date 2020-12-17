@@ -16,8 +16,21 @@ export default {
     MtnList,
   },
 
-  created() {
-    store.dispatch('getMtns');
+  async created() {
+    // get all mountains
+    await store.dispatch('getMtns');
+
+    // if slug, get specific mtn info
+    // if loading a page for a specific mountain, set current mtn
+    if (this.$route.params.slug) {
+      store.dispatch('selectMtn', this.$route.params.slug);
+    }
+  },
+
+  watch: {
+    $route() {
+      store.dispatch('selectMtn', this.$route.params.slug);
+    },
   },
 };
 </script>

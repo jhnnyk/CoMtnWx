@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     mtns: [],
+    selectedMtn: null,
   },
 
   getters: {
@@ -31,6 +32,9 @@ export const store = new Vuex.Store({
     setMtns: (state, mtns) => {
       state.mtns = mtns;
     },
+    setSelectedMtn: (state, mtn) => {
+      state.selectedMtn = mtn;
+    },
   },
 
   actions: {
@@ -52,6 +56,11 @@ export const store = new Vuex.Store({
       });
 
       commit('setMtns', mtnList);
+    },
+
+    selectMtn: async ({ commit, state }, slug) => {
+      const selectedMtn = await state.mtns.find((m) => m.slug === slug);
+      commit('setSelectedMtn', selectedMtn);
     },
   },
 });
