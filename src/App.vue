@@ -40,16 +40,54 @@ export default {
 </script>
 
 <style>
+/* coolor theme */
+:root {
+  --highlight: #e63946;
+  --light: #f1faee;
+  --accent: #a8dadc;
+  --medium: #457b9d;
+  --dark: #1d3557;
+}
+
+html {
+  background-color: var(--light);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
+  -moz-osx-font-smoothing: grayscale; */
+  font-family: 'Inter', sans-serif;
+  color: var(--dark);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--medium);
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
 }
 
 main {
   display: flex;
   flex-direction: row;
+  width: 90vw;
+  margin: 30px auto;
 }
 </style>

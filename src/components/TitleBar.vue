@@ -7,3 +7,15 @@
     </h1>
   </div>
 </template>
+
+<style scoped>
+.title-bar {
+  background-color: var(--dark);
+  text-align: center;
+  padding: 10px;
+}
+
+a {
+  color: var(--light);
+}
+</style>

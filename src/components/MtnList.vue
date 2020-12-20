@@ -25,3 +25,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.mtn-list {
+  width: 25vw;
+}
+</style>
