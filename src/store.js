@@ -52,15 +52,42 @@ export const store = new Vuex.Store({
       }
 
       snapshot.forEach((mtn) => {
-        mtnList.push(mtn.data());
+        mtnList.push({ id: mtn.id, ...mtn.data() });
       });
 
       commit('setMtns', mtnList);
     },
 
-    selectMtn: async ({ commit, state }, slug) => {
+    selectMtn: async ({ dispatch, commit, state }, slug) => {
       const selectedMtn = await state.mtns.find((m) => m.slug === slug);
       commit('setSelectedMtn', selectedMtn);
+
+      if (selectedMtn) {
+        dispatch('getForecastURL', selectedMtn);
+      }
+    },
+
+    getForecastURL: async (context, mtn) => {
+      const response = await fetch(
+        `https://api.weather.gov/points/${mtn.loc.x_},${mtn.loc.N_}`
+      );
+      const data = await response.json();
+      const forecastURL = await data.properties.forecast;
+
+      // update DB with forecast URL
+      if (forecastURL !== mtn.forecastURL) {
+        const spotRef = db.collection('spots').doc(mtn.id);
+        try {
+          await spotRef.update({
+            forecastURL: forecastURL,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        console.log('forecast URL updated!');
+      } else {
+        console.log('all set!');
+      }
     },
   },
 });
