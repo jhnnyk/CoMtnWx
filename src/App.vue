@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <TitleBar />
-    <MtnList />
-    <router-view />
+    <main>
+      <MtnList />
+      <router-view />
+    </main>
   </div>
 </template>
 
@@ -44,5 +46,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
 }
 </style>
